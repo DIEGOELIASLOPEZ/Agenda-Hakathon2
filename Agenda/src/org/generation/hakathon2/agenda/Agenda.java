@@ -12,14 +12,15 @@ public class Agenda {
     private List<Contact> agenda = new ArrayList<>();
     private final int maxContact = 10;
 
-    public Agenda(){
+    public Agenda() {
 
     }
 
     public List<Contact> getAgenda() {
         return agenda;
     }
-    public int getMaxContact(){
+
+    public int getMaxContact() {
         return maxContact;
     }
 
@@ -34,12 +35,14 @@ public class Agenda {
             System.out.println("Contacto añadido exitosamente.");
         }
     }
-    //2. Verifica si existe Contacto - Santiago
-    public boolean existContact(Contact c){
 
+    //2. Verifica si existe Contacto - Santiago
+    public boolean existContact(Contact c) {
+        return true;
     }
+
     //3. Listar contactos - Elías
-    public void listContact(){
+    public void listContact() {
 
     }
 
@@ -66,7 +69,8 @@ public class Agenda {
     }
 
     //7. Agenda llena - Andrea
-    public void fullAgenda() {
+    public boolean fullAgenda() {
+        return true;
 
     }
 
@@ -84,6 +88,7 @@ public class Agenda {
         boolean salir = false;
         int opcion;
         while (!salir) {
+            limpiarPantalla();
             // Encabezado estilizado
             System.out.println(CYAN + BOLD + "╔══════════════════════════════════════════════╗" + RESET);
             System.out.println(CYAN + BOLD + "║            AGENDA DE CONTACTOS               ║" + RESET);
@@ -110,8 +115,11 @@ public class Agenda {
                     apellido = scanner.nextLine();
                     System.out.print("Telefono del contacto: ");
                     telefono = scanner.nextLine();
+
+                    addContact(new Contact(nombre,apellido,telefono));
                     System.out.print(PURPLE + "\nPresiona ENTER para continuar..." + RESET);
                     enter = scanner.nextLine();
+                    break;
                 case 2:
                     System.out.println(GREEN + BOLD + "╔══════════════════════════════════════════════╗" + RESET);
                     System.out.println(GREEN + BOLD + "║            VERIFICAR CONTACTO                ║" + RESET);
@@ -126,10 +134,11 @@ public class Agenda {
                     listContact();
                     System.out.print(PURPLE + "\nPresiona ENTER para continuar..." + RESET);
                     enter = scanner.nextLine();
+
                     break;
                 case 4:
                     System.out.println(GREEN + BOLD + "╔══════════════════════════════════════════════╗" + RESET);
-                    System.out.println(GREEN + BOLD + "║           \uD83D\uDD0D BUSCAR CONTACTOS                ║" + RESET);
+                    System.out.println(GREEN + BOLD + "║              BUSCAR CONTACTOS                ║" + RESET);
                     System.out.println(GREEN + BOLD + "╚══════════════════════════════════════════════╝" + RESET);
 
                     System.out.println("Buscar Contactos");
@@ -167,7 +176,7 @@ public class Agenda {
                     break;
                 case 8:
                     System.out.println(RED + BOLD + "╔══════════════════════════════════════════════╗" + RESET);
-                    System.out.println(RED + BOLD + "║         SALIENDO DE LA AGENDA \uD83C\uDFC3\uD83D\uDEAA           ║" + RESET);
+                    System.out.println(RED + BOLD + "║             SALIENDO DE LA AGENDA            ║" + RESET);
                     System.out.println(RED + BOLD + "╚══════════════════════════════════════════════╝" + RESET);
                     salir = true;
                     break;

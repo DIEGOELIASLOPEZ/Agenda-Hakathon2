@@ -5,7 +5,7 @@ import org.generation.hakathon2.contact.Contact;
 
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 
-import static org.generation.hakathon2.syle.Syles.*;
+import static org.generation.hakathon2.style.Style.*;
 
 import java.util.Scanner;
 
