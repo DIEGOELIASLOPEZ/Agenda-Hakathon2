@@ -38,11 +38,34 @@ public class Agenda {
 
     //2. Verifica si existe Contacto - Santiago
     public boolean existContact(Contact c) {
-        return true;
+        if (c == null) {
+            return false;
+        }
+        for (int i = 0; i < agenda.size(); i++) {
+            Contact contactoActual = agenda.get(i);
+
+            if (contactoActual.getNombre().equalsIgnoreCase(c.getNombre()) &&
+                    contactoActual.getApellido().equalsIgnoreCase(c.getApellido())) {
+                return true;
+            }
+        }
+        return false;
+
     }
 
     //3. Listar contactos - Elías
     public void listContact() {
+//        Muestra todos los contactos de la agenda en el siguiente formato: Nombre Apellido - Teléfono.
+//        Ordena los contactos alfabéticamente por nombre y apellido antes de mostrarlos.
+
+        // Ordena la lista completa por el Nombre
+        agenda.sort(Comparator.comparing(Contact::getNombre));
+
+        for (Contact contacto : agenda) {
+            System.out.println(contacto.getFullName() + " - " + contacto.getTelefono());
+
+        }
+
 
     }
 
@@ -59,24 +82,59 @@ public class Agenda {
     }
 
     //5. Eliminar contacto - Jesús
-    public void removeContact() {
-
+    public void removeContact(Contact c) {
+        for (int i = 0; i < agenda.size(); i++) {
+            Contact contacto = agenda.get(i);
+            if (contacto.getNombre().equals(c.getNombre())
+                    && contacto.getApellido().equals(c.getApellido())) {
+                agenda.remove(i);
+                System.out.println("Se eliminó registro con éxito.");
+                return;
+            }
+        }
+        System.out.println("Contacto no encontrado");
     }
+    //
+
 
     //6. Modificar telefono - Andrea
     public void updateTel(String nombre, String apellido, String nuevoTelefono) {
-
+        for (int i = 0; i < agenda.size(); i++) {
+            Contact contacto = agenda.get(i);
+            if (contacto.getNombre().equals(nombre) && contacto.getApellido().equals(apellido)) {
+                contacto.setTelefono(nuevoTelefono);
+                System.out.println("El numero de telefono se ha modificado correctamente.");
+                return;
+            }
+        }
+        System.out.println("No se ha encontrado el contacto ingresado.");
     }
 
     //7. Agenda llena - Andrea
     public boolean fullAgenda() {
-        return true;
-
+        if (agenda.size() >= maxContact) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    //8. Espacio disponible - Adri
-    public void freeSpace() {
 
+    public String freeSpace() {
+        int availablesSpaces = maxContact - agenda.size();
+
+        if (availablesSpaces == 0) {
+            return ("La agenda está llena. No hay espacios disponibles.");
+        } else {
+            return ("Espacios disponibles: " + availablesSpaces);
+        }
+    }
+
+    public void continuar() {
+        Scanner scanner = new Scanner(System.in);
+        String enter;
+        System.out.print(PURPLE + "\nPresiona ENTER para continuar..." + RESET);
+        enter = scanner.nextLine();
     }
 
     public void menu() {
@@ -87,6 +145,19 @@ public class Agenda {
         String enter;
         boolean salir = false;
         int opcion;
+
+        System.out.println(BLUE + BOLD);
+        System.out.println("  █████╗  ██████╗ ███████╗███╗   ██╗██████╗  █████╗ ");
+        System.out.println(" ██╔══██╗██╔════╝ ██╔════╝████╗  ██║██╔══██╗██╔══██╗");
+        System.out.println(" ███████║██║  ███╗█████╗  ██╔██╗ ██║██║  ██║███████║");
+        System.out.println(" ██╔══██║██║   ██║██╔══╝  ██║╚██╗██║██║  ██║██╔══██║");
+        System.out.println(" ██║  ██║╚██████╔╝███████╗██║ ╚████║██████╔╝██║  ██║");
+        System.out.println(" ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝");
+        System.out.println(RESET);
+        System.out.print(YELLOW + "Pulsa Enter para entrar al Menú..." + RESET);
+        enter = scanner.nextLine();
+
+
         while (!salir) {
             limpiarPantalla();
             // Encabezado estilizado
@@ -98,11 +169,12 @@ public class Agenda {
             System.out.println(BLUE + "3. " + RESET + "Listar Contactos");
             System.out.println(BLUE + "4. " + RESET + "Buscar Contacto");
             System.out.println(BLUE + "5. " + RESET + "Eliminar Contacto");
-            System.out.println(BLUE + "6. " + RESET + "Moficcar Telefono de un Contacto");
-            System.out.println(BLUE + "7. " + RESET + "Espacio Disponible");
+            System.out.println(BLUE + "6. " + RESET + "Modificar Telefono de un Contacto");
+            System.out.println(BLUE + "7. " + RESET + "Revisar Espacio Disponible");
             System.out.println(RED + "8. SALIR" + RESET);
             System.out.print(BOLD + "Selecciona una opción " + CYAN + "" + RESET);
             opcion = Integer.parseInt(scanner.nextLine());
+
             switch (opcion) {
                 case 1:
                     System.out.println(GREEN + BOLD + "╔══════════════════════════════════════════════╗" + RESET);
@@ -116,16 +188,27 @@ public class Agenda {
                     System.out.print("Telefono del contacto: ");
                     telefono = scanner.nextLine();
 
-                    addContact(new Contact(nombre,apellido,telefono));
-                    System.out.print(PURPLE + "\nPresiona ENTER para continuar..." + RESET);
-                    enter = scanner.nextLine();
+                    addContact(new Contact(nombre, apellido, telefono));
+                    continuar();
                     break;
                 case 2:
                     System.out.println(GREEN + BOLD + "╔══════════════════════════════════════════════╗" + RESET);
                     System.out.println(GREEN + BOLD + "║            VERIFICAR CONTACTO                ║" + RESET);
                     System.out.println(GREEN + BOLD + "╚══════════════════════════════════════════════╝" + RESET);
-                    System.out.print(PURPLE + "\nPresiona ENTER para continuar..." + RESET);
-                    enter = scanner.nextLine();
+
+                    System.out.print("Nombre del contacto: ");
+                    nombre = scanner.nextLine();
+                    System.out.print("Apellido del contacto: ");
+                    apellido = scanner.nextLine();
+
+                    Contact contact1 = new Contact(nombre, apellido, searchContact(nombre, apellido));
+
+                    if (existContact(contact1)) {
+                        System.out.println(YELLOW + contact1.getFullName() + " existe en la agenda" + RESET);
+                    } else {
+                        System.out.println(YELLOW + contact1.getFullName() + " no esta en la agenda" + RESET);
+                    }
+                    continuar();
                     break;
                 case 3:
                     System.out.println(GREEN + BOLD + "╔══════════════════════════════════════════════╗" + RESET);
@@ -148,15 +231,21 @@ public class Agenda {
                     apellido = scanner.nextLine();
 
                     System.out.println(searchContact(nombre, apellido));
-                    System.out.println(PURPLE + "\nPresiona ENTER para continuar..." + RESET);
-                    scanner.nextLine();
-                    System.out.print(PURPLE + "\nPresiona ENTER para continuar..." + RESET);
-                    enter = scanner.nextLine();
+                    continuar();
                     break;
                 case 5:
                     System.out.println(GREEN + BOLD + "╔══════════════════════════════════════════════╗" + RESET);
                     System.out.println(GREEN + BOLD + "║            ELIMINAR CONTACTOS                ║" + RESET);
                     System.out.println(GREEN + BOLD + "╚══════════════════════════════════════════════╝" + RESET);
+
+                    System.out.print("Nombre del contacto: ");
+                    nombre = scanner.nextLine();
+                    System.out.print("Apellido del contacto: ");
+                    apellido = scanner.nextLine();
+
+
+                    removeContact(new Contact(nombre, apellido, searchContact(nombre, apellido)));
+
                     System.out.print(PURPLE + "\nPresiona ENTER para continuar..." + RESET);
                     enter = scanner.nextLine();
                     break;
@@ -164,15 +253,21 @@ public class Agenda {
                     System.out.println(GREEN + BOLD + "╔══════════════════════════════════════════════╗" + RESET);
                     System.out.println(GREEN + BOLD + "║             MODIFICAR TELEFONO               ║" + RESET);
                     System.out.println(GREEN + BOLD + "╚══════════════════════════════════════════════╝" + RESET);
-                    System.out.print(PURPLE + "\nPresiona ENTER para continuar..." + RESET);
-                    enter = scanner.nextLine();
+                    System.out.print("Nombre del contacto: ");
+                    nombre = scanner.nextLine();
+                    System.out.print("Apellido del contacto: ");
+                    apellido = scanner.nextLine();
+                    System.out.print("Escribe el numero numero Telefonico: ");
+                    telefono = scanner.nextLine();
+                    updateTel(nombre,apellido,telefono);
+                    continuar();
                     break;
                 case 7:
                     System.out.println(GREEN + BOLD + "╔══════════════════════════════════════════════╗" + RESET);
-                    System.out.println(GREEN + BOLD + "║             ESPACIO DISPONIBLE                ║" + RESET);
+                    System.out.println(GREEN + BOLD + "║          " + freeSpace().toUpperCase() + "             ║" + RESET);
                     System.out.println(GREEN + BOLD + "╚══════════════════════════════════════════════╝" + RESET);
-                    System.out.print(PURPLE + "\nPresiona ENTER para continuar..." + RESET);
-                    enter = scanner.nextLine();
+                    freeSpace();
+                    continuar();
                     break;
                 case 8:
                     System.out.println(RED + BOLD + "╔══════════════════════════════════════════════╗" + RESET);
@@ -184,7 +279,6 @@ public class Agenda {
                     System.out.println("Opcion no dispobible");
                     break;
             }
-
         }
     }
 }
