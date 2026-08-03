@@ -71,7 +71,7 @@ public class Agenda {
         if (agenda.size()=> maxContact){
             System.out.println("No hay espacio disponible para nuevos contactos");
         }else {
-            System.out.println(""); //duda
+            System.out.println("Aun hay espacios disponibles");
         }
     }
     //8. Espacio disponible - Adri
