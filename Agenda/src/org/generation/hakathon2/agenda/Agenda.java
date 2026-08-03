@@ -30,8 +30,17 @@ public class Agenda {
     public void searchContact(){
     }
     //5. Eliminar contacto - Jesús
-    public void removeContact(){
-
+    public void removeContact(Contact c) {
+        for (int i = 0; i < agenda.size(); i++) {
+            Contact contacto = agenda.get(i);
+            if (contacto.getNombre().equals(c.getNombre())
+                    && contacto.getApellido().equals(c.getApellido())) {
+                agenda.remove(i);
+                System.out.println("Se eliminó registro con éxito.");
+                return;
+            }
+        }
+        System.out.println("Contacto no encontrado");
     }
     //6. Modificar telefono - Andrea
     public void updateTel(String nombre, String apellido, String nuevoTelefono){
