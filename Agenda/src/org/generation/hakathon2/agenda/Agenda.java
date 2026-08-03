@@ -43,6 +43,13 @@ public class Agenda {
     }
     //8. Espacio disponible - Adri
     public void freeSpace(){
+        int availablesSpaces = maxContact - agenda.size();
 
+        if (availablesSpaces == 0) {
+            System.out.println("La agenda está llena. No hay espacios disponibles.");
+            { else {
+                System.out.println("Espacios disponibles: " + availablesSpaces);
+            }
+        }
     }
 }
