@@ -5,13 +5,8 @@ import org.generation.hakathon2.contact.Contact;
 import javax.swing.plaf.PanelUI;
 import java.util.*;
 
-import static org.generation.hakathon2.syle.Syles.*;
-import static org.generation.hakathon2.syle.Syles.BLUE;
-import static org.generation.hakathon2.syle.Syles.BOLD;
-import static org.generation.hakathon2.syle.Syles.CYAN;
-import static org.generation.hakathon2.syle.Syles.GREEN;
-import static org.generation.hakathon2.syle.Syles.RED;
-import static org.generation.hakathon2.syle.Syles.RESET;
+import static org.generation.hakathon2.style.Style.*;
+
 
 public class Agenda {
     private List<Contact> agenda = new ArrayList<>();
