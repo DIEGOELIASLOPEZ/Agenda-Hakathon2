@@ -12,42 +12,34 @@ public class Agenda {
     private List<Contact> agenda = new ArrayList<>();
     private final int maxContact = 10;
 
-    public Agenda() {
+    public Agenda(){
 
     }
 
     public List<Contact> getAgenda() {
         return agenda;
     }
-
-    public int getMaxContact() {
+    public int getMaxContact(){
         return maxContact;
     }
 
     //1. Añadir contacto - Margarita
     public void addContact(Contact c) {
-        agenda.add(c);
-
-    }
-
-    //2. Verifica si existe Contacto - Santiago
-    public boolean existContact(Contact c) {
-        return true;
-    }
-
-    //3. Listar contactos - Elías
-    public void listContact() {
-//        Muestra todos los contactos de la agenda en el siguiente formato: Nombre Apellido - Teléfono.
-//        Ordena los contactos alfabéticamente por nombre y apellido antes de mostrarlos.
-
-        // Ordena la lista completa por el Nombre
-        agenda.sort(Comparator.comparing(Contact::getNombre));
-
-        for (Contact contacto : agenda) {
-            System.out.println(contacto.getFullName() + " - " + contacto.getTelefono());
-
+        if (fullAgenda()) {
+            System.out.println("La agenda está llena. No se pueden añadir mas contactos.");
+        } else if (existContact(c)) {
+            System.out.println("El contacto ya existe.");
+        } else {
+            agenda.add(c);
+            System.out.println("Contacto añadido exitosamente.");
         }
+    }
+    //2. Verifica si existe Contacto - Santiago
+    public boolean existContact(Contact c){
 
+    }
+    //3. Listar contactos - Elías
+    public void listContact(){
 
     }
 
