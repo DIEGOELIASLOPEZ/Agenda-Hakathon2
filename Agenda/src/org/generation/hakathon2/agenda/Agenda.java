@@ -64,11 +64,24 @@ public class Agenda {
     }
     //6. Modificar telefono - Andrea
     public void updateTel(String nombre, String apellido, String nuevoTelefono){
-
+        for (int i = 0; i < agenda.size(); i++) {
+            Contact contacto = agenda.get(i);
+            if (contacto.getNombre().equals(nombre) && contacto.getApellido().equals(apellido)) {
+                contacto.setTelefono(nuevoTelefono);
+                System.out.println("El numero de telefono se ha modificado correctamente.");
+                return;
+            }
+        }
+        System.out.println("No se ha encontrado el contacto ingresado.");
     }
+
     //7. Agenda llena - Andrea
     public void fullAgenda(){
-
+        if (agenda.size()=> maxContact){
+            System.out.println("No hay espacio disponible para nuevos contactos");
+        }else {
+            System.out.println("Aun hay espacios disponibles");
+        }
     }
     //8. Espacio disponible - Adri
     public void freeSpace(){
