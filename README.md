@@ -81,3 +81,29 @@ Agenda/
                 ├── main/         # Punto de entrada (Main.java)
                 ├── service/      # Servicios y lógica de negocio
                 └── style/        # Estilos, colores ANSI y formato de consola
+```
+---
+## 💻 Instalación y Ejecución desde Terminal
+
+Sigue estos pasos para clonar, compilar y ejecutar el proyecto directamente en tu equipo:
+
+### 1️⃣ Clonar el Repositorio
+```git clone https://github.com/DIEGOELIASLOPEZ/Agenda-Hakathon2.git```
+### 2️⃣ Navegar a la carpeta src
+```cd Agenda/src```
+3️⃣ Compilar el Proyecto
+Windows (PowerShell):
+```javac -encoding UTF-8 (Get-ChildItem -Recurse -Filter *.java).FullName```
+
+PowerShell
+```javac -encoding UTF-8 (Get-ChildItem -Recurse -Filter *.java).FullName```
+macOS / Linux / Windows CMD:
+
+4️⃣ Ejecutar la Aplicación
+Windows (PowerShell):
+
+PowerShell
+```java "-Dfile.encoding=UTF-8" org.generation.hakathon2.main.Main```
+macOS / Linux / Windows CMD:
+
+```java -Dfile.encoding=UTF-8 org.generation.hakathon2.main.Main```
