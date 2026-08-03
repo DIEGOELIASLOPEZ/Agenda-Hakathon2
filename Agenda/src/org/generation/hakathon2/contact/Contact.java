@@ -41,3 +41,4 @@ public class Contact {
         return "Nombre: " + nombre + "\nApellido: " + apellido + "\nTelefono: " + telefono;
     }
 }
+

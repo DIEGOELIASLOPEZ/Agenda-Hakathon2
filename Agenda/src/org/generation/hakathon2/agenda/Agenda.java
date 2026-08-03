@@ -1,7 +1,7 @@
 package org.generation.hakathon2.agenda;
 
 public class Agenda {
-    private List<Contact> agenda = new Arraylist<>();
+    private List<Contact> agenda = new ArrayList<>();
     private final int maxContact = 10;
 
     public Agenda(){
@@ -14,9 +14,17 @@ public class Agenda {
     public int getMaxContact(){
         return maxContact;
     }
-    //1. Añadir contacto - Margarita
-    public void addContact(Contact c){
 
+    //1. Añadir contacto - Margarita
+    public void addContact(Contact c) {
+        if (fullAgenda()) {
+            System.out.println("La agenda está llena. No se pueden añadir mas contactos.");
+        } else if (existContact(c)) {
+            System.out.println("El contacto ya existe.");
+        } else {
+            agenda.add(c);
+            System.out.println("Contacto añadido exitosamente.");
+        }
     }
     //2. Verifica si existe Contacto - Santiago
     public boolean existContact(Contact c){
