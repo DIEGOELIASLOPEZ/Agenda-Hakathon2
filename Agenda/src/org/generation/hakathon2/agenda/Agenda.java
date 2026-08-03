@@ -28,6 +28,18 @@ public class Agenda {
     }
     //2. Verifica si existe Contacto - Santiago
     public boolean existContact(Contact c){
+        if (c == null) {
+            return false;
+        }
+        for (int i = 0; i < agenda.size(); i++) {
+            Contact contactoActual = agenda.get(i);
+
+            if (contactoActual.getNombre().equalsIgnoreCase(c.getNombre()) &&
+                    contactoActual.getApellido().equalsIgnoreCase(c.getApellido())) {
+                return true;
+            }
+        }
+        return false;
 
     }
     //3. Listar contactos - Elías
