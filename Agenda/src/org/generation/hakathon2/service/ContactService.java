@@ -1,0 +1,4 @@
+package org.generation.hakathon2.service;
+
+public class ContactService {
+}
