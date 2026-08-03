@@ -92,6 +92,63 @@ Agenda-Hakathon2/
 
 ---
 
+## 👥 Colaboradores
+
+<p align="center">
+Este proyecto fue planeado, diseñado y desarrollado gracias al trabajo colaborativo del siguiente equipo:
+</p>
+
+<table align="center">
+    <tr>
+        <td align="center">
+            <a href="https://github.com/Andreapc02">
+                <img src="https://github.com/Andreapc02.png" width="120px" style="border-radius:50%;" alt="Andrea Perez"/><br><br>
+                <sub><b>Andrea Perez</b></sub>
+            </a>
+        </td>
+
+        <td align="center">
+            <a href="https://github.com/DIEGOELIASLOPEZ">
+                <img src="https://github.com/DIEGOELIASLOPEZ.png" width="120px" style="border-radius:50%;" alt="Diego Elías López"/><br><br>
+                <sub><b>Diego Elías López</b></sub>
+            </a>
+        </td>
+
+        <td align="center">
+            <a href="https://github.com/JesusHernandezDl">
+                <img src="https://github.com/JesusHernandezDl.png" width="120px" style="border-radius:50%;" alt="Jesús Hernández"/><br><br>
+                <sub><b>Jesús Hernández</b></sub>
+            </a>
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+            <a href="https://github.com/MargaritaMtnzStgo">
+                <img src="https://github.com/MargaritaMtnzStgo.png" width="120px" style="border-radius:50%;" alt="Margarita Martínez"/><br><br>
+                <sub><b>Margarita Martínez</b></sub>
+            </a>
+        </td>
+
+        <td align="center">
+            <a href="https://github.com/piripili">
+                <img src="https://github.com/piripili.png" width="120px" style="border-radius:50%;" alt="Piripili"/><br><br>
+                <sub><b>Piripili</b></sub>
+            </a>
+        </td>
+
+        <td align="center">
+            <a href="https://github.com/SantiagoJimenez05">
+                <img src="https://github.com/SantiagoJimenez05.png" width="120px" style="border-radius:50%;" alt="Santiago Jiménez"/><br><br>
+                <sub><b>Santiago Jiménez</b></sub>
+            </a>
+        </td>
+    </tr>
+</table>
+
+
+---
+
 # 💻 Instalación y Ejecución
 
 ## 1️⃣ Clonar el repositorio
